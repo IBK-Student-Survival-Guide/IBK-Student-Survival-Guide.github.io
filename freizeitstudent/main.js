@@ -24,17 +24,20 @@ L.control.layers({
 }).addTo(map);
 
 // Maßstab einfügen
-L.control.scale({
-    imperial: false,
-}).addTo(map);
-
-// Marker hinzufügen
-DATA.forEach(location => {
-  const marker = L.marker([location.lat, location.lng]).addTo(map);
-  marker.bindPopup(`
-    <strong>${location.NAME}</strong><br>
-    ${location.ADR}<br>
-    <a href="${location.WEB}" target="_blank">Website</a>
+DATA.forEach(item => {
+  const marker = L.marker([item.lat, item.lng]).bindPopup(`
+    <strong>${item.NAME}</strong><br>
+    ${item.ADR}<br>
+    <a href="${item.WEB}" target="_blank">Website</a><br>
+    Kategorie: ${item.KATE}
   `);
+
+  const KATE = item.KATE.toLowerCase();
+  if (KATE === "bar") {
+    marker.addTo(overlays.bars);
+  } else if (KATE === "restaurant") {
+    marker.addTo(overlays.resto);
+  }
 });
+
 
