@@ -1,0 +1,87 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+main {
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    background-color: #004d7a;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+
+nav .navigation a {
+    margin-right: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav .navigation a:hover {
+    text-decoration: underline;
+}
+
+.infos {
+    margin-bottom: 2rem;
+}
+
+h2.inns {
+    color: #004d7a;
+    margin-bottom: 0.8rem;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+/* Responsive Layout  (KI- Erstllt) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    nav {
+        font-size: 1rem;
+    }
+
+    nav .navigation a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
+
+#map {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray; 
+}
+
+.icon-bar {
+    font-size: 25px; 
+}
+.icon-resto {
+    font-size: 25px;
+}
