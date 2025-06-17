@@ -3,3 +3,10 @@
     height: 600px;
     border: 1px solid gray; 
 }
+
+.icon-bar {
+    font-size: 25px; 
+}
+.icon-resto {
+    font-size: 25px;
+}
