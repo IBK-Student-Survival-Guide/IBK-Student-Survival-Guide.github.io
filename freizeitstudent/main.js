@@ -14,7 +14,7 @@ const DATA = [
         "ADR": "Kaiserjägerstraße 1, 6020 Innsbruck",
         "WEB": "http://www.dinz.at/",
         "EMAIL": "office@dinz.at",
-        "TEL": "",
+        "TEL": "/",
         "KATE": "Bar"
     },
     {
@@ -33,7 +33,7 @@ const DATA = [
         "lng": 11.39687,
         "ADR": "Universitätsstraße 3, 6020 Innsbruck",
         "WEB": "https://www.theatercafe-tirol.at",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 660 7055632",
         "KATE": "Bar"
     },
@@ -43,8 +43,8 @@ const DATA = [
         "lng": 11.38925,
         "ADR": "Mariahilfstraße 24, 6020 Innsbruck",
         "WEB": "https://www.instagram.com/pm_innsbruck/?hl=de",
-        "EMAIL": "",
-        "TEL": "",
+        "EMAIL": "/",
+        "TEL": "/",
         "KATE": "Bar"
     },
     {
@@ -83,8 +83,8 @@ const DATA = [
         "lng": 11.39353,
         "ADR": "Herzog-Friedrich-Straße 31, 6020 Innsbruck",
         "WEB": "https://www.weisseskreuz.at/de/die-bar/",
-        "EMAIL": "",
-        "TEL": "",
+        "EMAIL": "/",
+        "TEL": "/",
         "KATE": "Bar"
     },
     {
@@ -103,7 +103,7 @@ const DATA = [
         "lng": 11.39293,
         "ADR": "Herzog-Otto-Straße 8, 6020 Innsbruck",
         "WEB": "http://www.cafe-moustache.at/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 680 2163908",
         "KATE": "Bar"
     },
@@ -114,7 +114,7 @@ const DATA = [
         "ADR": "Dompl. 3, 6020 Innsbruck",
         "WEB": "https://www.fuchsundhase.bar/",
         "EMAIL": "info@fuchsundhase.bar",
-        "TEL": "",
+        "TEL": "/",
         "KATE": "Bar"
     },
     {
@@ -123,7 +123,7 @@ const DATA = [
         "lng": 11.39405,
         "ADR": "Maria-Theresien-Straße 9, 6020 Innsbruck",
         "WEB": "https://www.facebook.com/100064891575239/info/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512 582011",
         "KATE": "Bar"
     },
@@ -194,7 +194,7 @@ const DATA = [
         "ADR": "Museumstraße 5, 6020 Innsbruck",
         "WEB": "http://www.tribaun.com",
         "EMAIL": "info@tribaun.com",
-        "TEL": "",
+        "TEL": "/",
         "KATE": "Bar"
     },
     {
@@ -203,7 +203,7 @@ const DATA = [
         "lng": 11.39356,
         "ADR": "Herzog-Friedrich-Straße 33, 6020 Innsbruck",
         "WEB": "http://www.diefranzosen.at/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512 552167",
         "KATE": "Bar"
     },
@@ -253,7 +253,7 @@ const DATA = [
         "lng": 11.3967,
         "ADR": "Universitätsstraße 3/Top 1, 6020 Innsbruck",
         "WEB": "https://www.unapizza.at/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512556032",
         "KATE": "Restaurant"
     },
@@ -263,7 +263,7 @@ const DATA = [
         "lng": 11.38007,
         "ADR": "Egger-Lienz-Straße 118, 6020 Innsbruck",
         "WEB": "https://glorious-bastards.at",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512319192",
         "KATE": "Restaurant"
     },
@@ -293,7 +293,7 @@ const DATA = [
         "lng": 11.3914,
         "ADR": "Anichstraße 18, 6020 Innsbruck",
         "WEB": "https://nami-innsbruck.at/menu/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 6701855888",
         "KATE": "Restaurant"
     },
@@ -333,7 +333,7 @@ const DATA = [
         "lng": 11.39553,
         "ADR": "Museumstraße 3, 6020 Innsbruck",
         "WEB": "https://www.ludwig-burger.at/innsbruck",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512319222",
         "KATE": "Restaurant"
     },
@@ -343,7 +343,7 @@ const DATA = [
         "lng": 11.39489,
         "ADR": "Burggraben 29, 6020 Innsbruck",
         "WEB": "http://www.ilconvento.at/",
-        "EMAIL": "",
+        "EMAIL": "/",
         "TEL": "0043 512581354",
         "KATE": "Restaurant"
     },
@@ -414,6 +414,20 @@ const DATA = [
 // Karte erstellen 
 let map = L.map("map").setView([ibk.lat, ibk.lng], 13
 );
+//LayerGroup erstellen 
+let overlays = {
+    Bars: L.layerGroup().addTo(map),
+    Restaurants: L.layerGroup().addTo(map),
+
+};
+
+// Kartenlayer 
+L.control.layers({
+    "OpenStreetMap": L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+    "OpenTopoMap": L.tileLayer.provider('OpenTopoMap'),
+
+}, overlays).addTo(map);
+
 // Maßstab einfügen 
 L.control.scale({
     imperial: false,
@@ -435,7 +449,7 @@ DATA.forEach(item => {
 
     const icon = L.divIcon({
         html: iconHtml,
-        className: '', 
+        className: '',
         iconSize: [24, 24],
         iconAnchor: [12, 24]
     });
@@ -444,15 +458,18 @@ DATA.forEach(item => {
     marker.bindPopup(`
         <h2>${item.NAME}</h2>
         <ul>
-            <li>Adresse: ${item.ADR}</li>
+            <li><i class="fa-solid fa-address-book"></i> ${item.ADR}</li>
+            <li><i class="fa-solid fa-paper-plane"></i> ${item.EMAIL}</li>
+            <li><i class="fa-solid fa-phone"></i> ${item.TEL}</li>
             <li><a href="${item.WEB}" target="_blank">Website</a></li>
         </ul>
     `);
-    marker.addTo(markerGroup);
+    //Zuordnung 
+    if (item.KATE === "Bar") {
+        marker.addTo(overlays.Bars);
+    } else if (item.KATE === "Restaurant") {
+        marker.addTo(overlays.Restaurants);
+    }
 });
 
-// Kartenlayer
-L.control.layers({
-    "OpenStreetMap": L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
-    "OpenTopoMap": L.tileLayer.provider('OpenTopoMap')
-}).addTo(map);
+
