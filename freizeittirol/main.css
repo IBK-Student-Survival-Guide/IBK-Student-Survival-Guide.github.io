@@ -80,7 +80,7 @@ p {
 }
 
 .leicht {
-     --ele-area: #3D9970;
+     --ele-area: blue;
     --ele-bg: white;
 }
 
@@ -94,12 +94,32 @@ p {
     height: 600px;
     border: 1px solid gray; 
 }
+.mittel {
+     --ele-area: red;
+    --ele-bg: white;
+}
+
+#profile2{
+    margin-top: 0.3em;
+    border: 1px solid grey;
+}
 
 #map3 {
     width: 100%;
     height: 600px;
     border: 1px solid gray; 
 }
+
+.schwer {
+     --ele-area: black;
+    --ele-bg: white;
+}
+
+#profile3{
+    margin-top: 0.3em;
+    border: 1px solid grey;
+}
+
 
 .icon-bar {
     font-size: 25px; 
