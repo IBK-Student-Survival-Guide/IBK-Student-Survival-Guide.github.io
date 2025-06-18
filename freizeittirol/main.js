@@ -7,15 +7,11 @@ let ibk = {
 };
 
 //Karte 1 initialisieren
-let map = L.map("map1").setView([ibk.lat, ibk.lng], 9);
+let map1 = L.map("map1").setView([ibk.lat, ibk.lng], 9);
 
 // WMTS Hintergrundlayer der eGrundkarte Tirol
 let eGrundkarteTirol = {
     sommer: L.tileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png", {
-        attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
-    }),
-    winter: L.tileLayer(
-        "https://wmts.kartetirol.at/gdi_winter/{z}/{x}/{y}.png", {
         attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
     }),
     ortho: L.tileLayer("https://wmts.kartetirol.at/gdi_ortho/{z}/{x}/{y}.png", {
@@ -33,11 +29,7 @@ L.control.layers({
     "eGrundkarte Tirol Sommer": L.layerGroup([
         eGrundkarteTirol.sommer,
         eGrundkarteTirol.nomenklatur
-    ]).addTo(map),
-    "eGrundkarte Tirol Winter": L.layerGroup([
-        eGrundkarteTirol.winter,
-        eGrundkarteTirol.nomenklatur
-    ]),
+    ]).addTo(map1),
     "eGrundkarte Tirol Orthofoto": L.layerGroup([
         eGrundkarteTirol.ortho,
         eGrundkarteTirol.nomenklatur,
@@ -50,3 +42,31 @@ L.control.layers({
 L.control.scale({
     imperial: false,
 }).addTo(map1);
+
+//Elevation Map 1
+
+const controlElevation = L.control.elevation({
+    theme: "leicht",
+    time: false,
+    elevationDiv: "#profile1", 
+    height: 300, 
+    slope: true, 
+ }).addTo(map1);
+ controlElevation.load("gpx/leicht.gpx");
+
+ //Minimap Map 1
+
+var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png"); 
+var miniMap = new L.Control.MiniMap(gkTirol,{
+    toggleDisplay: true
+}).addTo(map1);
+
+//Fullscrean 
+map1.addControl(new L.Control.Fullscreen()); 
+
+//Locate controle
+    var lc = L.control
+        .locate({
+            position: "topright",
+        })
+        .addTo(map1);
