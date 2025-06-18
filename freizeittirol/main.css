@@ -73,7 +73,19 @@ p {
     }
 }
 
-#map {
+#map1 {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray; 
+}
+
+#map2 {
+    width: 100%;
+    height: 600px;
+    border: 1px solid gray; 
+}
+
+#map3 {
     width: 100%;
     height: 600px;
     border: 1px solid gray; 
