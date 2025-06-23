@@ -109,7 +109,7 @@ section {
 }
 
 .leicht {
-     --ele-area: blue;
+     --ele-area: #33CFFF;
     --ele-bg: white;
 }
 
@@ -117,14 +117,13 @@ section {
     margin-top: 0.3em;
     border: 1px solid grey;
 }
-
 #map2 {
     width: 100%;
     height: 600px;
     border: 1px solid gray; 
 }
 .mittel {
-     --ele-area: red;
+     --ele-area: #BA251D;
     --ele-bg: white;
 }
 
@@ -140,7 +139,7 @@ section {
 }
 
 .schwer {
-     --ele-area: black;
+     --ele-area: #434341;
     --ele-bg: white;
 }
 
@@ -156,3 +155,4 @@ section {
 .icon-resto {
     font-size: 25px;
 }
+
