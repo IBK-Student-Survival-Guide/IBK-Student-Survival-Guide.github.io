@@ -23,7 +23,29 @@ main {
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+/* KI_BEGIN */
+header img, figure img {
+  border-radius: 8px;
+  box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 6px 18px rgba(0, 0, 0, 0.10);
+  transition: transform 0.25s ease;
+}
 
+figure img:hover {
+  transform: scale(1.01);
+}
+
+figure {
+    margin: 2rem 0;
+  }
+  figcaption {
+    margin-top: .5rem;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+  }
+/* KI_END */
 nav {
     background-color: #004d7a;
     color: white;

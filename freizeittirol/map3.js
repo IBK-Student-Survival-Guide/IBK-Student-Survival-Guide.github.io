@@ -64,4 +64,18 @@
   var lc3 = L.control.locate({
     position: "topright",
   }).addTo(map3);
+
+  // Koordinatenanzeige
+L.control.coordinates({
+    position: "bottomleft",
+    decimals: 5,
+    decimalSeperator: ".",
+    labelTemplateLat: "Latitude: {y}",
+    labelTemplateLng: "Longitude: {x}",
+    enableUserInput: true,
+    useDMS: false,
+    useLatLngOrder: true,
+    markerType: L.marker,
+    markerProps: {}
+}).addTo(map3);
 })();
