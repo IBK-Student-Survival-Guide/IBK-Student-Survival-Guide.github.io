@@ -471,5 +471,30 @@ DATA.forEach(item => {
         marker.addTo(overlays.Restaurants);
     }
 });
+// MiniMap
+var gkTirol = new L.TileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png");
+var miniMap = new L.Control.MiniMap(gkTirol, {
+    toggleDisplay: true
+}).addTo(map);
 
+// Fullscreen
+map.addControl(new L.Control.Fullscreen());
 
+// Locate control
+var lc = L.control.locate({
+    position: "topright"
+}).addTo(map);
+
+// Koordinatenanzeige
+L.control.coordinates({
+    position: "bottomleft",
+    decimals: 5,
+    decimalSeperator: ".",
+    labelTemplateLat: "Latitude: {y}",
+    labelTemplateLng: "Longitude: {x}",
+    enableUserInput: true,
+    useDMS: false,
+    useLatLngOrder: true,
+    markerType: L.marker,
+    markerProps: {}
+}).addTo(map);
