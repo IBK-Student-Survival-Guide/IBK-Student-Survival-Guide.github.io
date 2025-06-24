@@ -93,10 +93,13 @@ p {
         display: block;
         margin: 0.5rem 0;
     }
-}
+} 
+/*KI_Ende*/ 
+
+
 section {
-    background-color: #e9f0f7; /* zartes Hellblau als Hintergrund */
-    border: 1px solid #004d7a; /* blauer Rahmen passend zu Nav */
+    background-color: #e9f0f7; 
+    border: 1px solid #004d7a; 
     border-radius: 10px;
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
